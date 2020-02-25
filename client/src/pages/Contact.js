@@ -4,7 +4,7 @@ import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 
-function Detail(props) {
+function Contact(props) {
   const [book, setBook] = useState({})
 
   // When this component mounts, grab the book with the _id of props.match.params.id
@@ -47,4 +47,29 @@ function Detail(props) {
   }
 
 
-export default Detail;
+export default Contact;
+
+
+{/* <form>
+<Input
+  onChange={handleInputChange}
+  name="title"
+  placeholder="Title (required)"
+/>
+<Input
+  onChange={handleInputChange}
+  name="author"
+  placeholder="Author (required)"
+/>
+<TextArea
+  onChange={handleInputChange}
+  name="synopsis"
+  placeholder="Synopsis (Optional)"
+/>
+<FormBtn
+  disabled={!(formObject.author && formObject.title)}
+  onClick={handleFormSubmit}
+>
+  Submit Book
+</FormBtn>
+</form> */}
