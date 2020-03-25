@@ -1,9 +1,13 @@
 import React from "react";
+import BodyContainer from "../Components/BodyContainer"
+import Title from "../Components/Title"
 
 function About() {
-  return (
-    <h1>About me!</h1>
-  )
+    return (
+        <div>
+            <BodyContainer />
+        </div>
+    )
 }
 
 export default About
