@@ -11,7 +11,7 @@ function NavBar() {
 
     return (
         <nav style={{ backgroundColor: "lightblue" }}>
-            <Container  disableGutters='false'>
+            <Container>
                 <Grid container spacing={12}>
                     <Grid item xs={12} sm={10}>
                         <Typography color="textPrimary"> MATTHEW ATCHLEY</Typography>

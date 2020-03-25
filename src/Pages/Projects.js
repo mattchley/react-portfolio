@@ -1,13 +1,13 @@
 import React from "react";
 import ProjectCard from "../Components/ProjectCards"
+import Container from '@material-ui/core/Container';
 
 function Projects() {
   return (
-    <div>
+    <Container>
       <h1>Projects!</h1>
       <ProjectCard />
-    </div>
-
+    </Container>
   )
 }
 
