@@ -1,33 +1,38 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Typography from '@material-ui/core/Typography';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
 
 
 
 function NavBar() {
 
     return (
-        <div>
-            <nav>
-                <div>Matthew Atchley</div>
-
-                <div>
-                    <ul>
-                        <li id="aboutTab">
+        <nav style={{ backgroundColor: "lightblue" }}>
+            <Container  disableGutters='false'>
+                <Grid container spacing={12}>
+                    <Grid item xs={12} sm={10}>
+                        <Typography color="textPrimary"> MATTHEW ATCHLEY</Typography>
+                    </Grid>
+                    <Grid item xs={12} sm={2}>
+                        <Breadcrumbs aria-label="breadcrumb">
                             <Link
                                 className="link" to="/"
-                            > About </Link></li>
-                        <li id="projectsTab">
+                            > About </Link>
                             <Link
                                 className="link" to="/projects"
-                            > Projects </Link></li>
-                        <li id="resumeTab">
+                            > Projects </Link>
                             <Link
                                 className="link" to="/contact"
-                            > Contact </Link></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+                            > Contact </Link>
+                        </Breadcrumbs>
+                    </Grid>
+
+                </Grid>
+            </Container>
+        </nav>
     )
 }
 
