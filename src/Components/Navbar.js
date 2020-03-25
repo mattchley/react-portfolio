@@ -23,7 +23,7 @@ function NavBar() {
                         <li id="resumeTab">
                             <Link
                                 className="link" to="/contact"
-                            > Resume </Link></li>
+                            > Contact </Link></li>
                     </ul>
                 </div>
             </nav>
