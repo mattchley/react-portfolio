@@ -14,7 +14,7 @@ function NavBar() {
             <Container>
                 <Grid container spacing={12}>
                     <Grid item xs={12} sm={10}>
-                        <Typography color="textPrimary"> MATTHEW ATCHLEY</Typography>
+                        <Typography color="textPrimary">MATTHEW ATCHLEY</Typography>
                     </Grid>
                     <Grid item xs={12} sm={2}>
                         <Breadcrumbs aria-label="breadcrumb">
@@ -24,12 +24,11 @@ function NavBar() {
                             <Link
                                 className="link" to="/projects"
                             > Projects </Link>
-                            <Link
+                            {/* <Link
                                 className="link" to="/contact"
-                            > Contact </Link>
+                            > Contact </Link> */}
                         </Breadcrumbs>
                     </Grid>
-
                 </Grid>
             </Container>
         </nav>

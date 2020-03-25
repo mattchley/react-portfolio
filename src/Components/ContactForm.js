@@ -1,9 +1,11 @@
 import React from "react";
-
+import Container from '@material-ui/core/Container';
 
 function Button() {
     return (
-        <div>Contact Form goes here!</div>
+        <Container maxWidth="lg">
+
+        </Container>
     )
 }
 

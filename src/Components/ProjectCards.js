@@ -15,35 +15,35 @@ function ProjectCard() {
             <Grid container spacing={1}>
                 <Grid item xs={12} sm={6}>
                     <Paper >
-                        <h1>Node.js SQL EmployeeDB</h1>
-                        <img src={EmployDB} style={{ maxHeight: "340px", maxWidth: "300px" }}></img>
+                        <h2>Node.js SQL EmployeeDB</h2>
+                        <img src={EmployDB} alt="Node.js SQL EmployeeDB" style={{ maxHeight: "340px", maxWidth: "300px" }}></img>
                         <p>Description of the project goes here!</p>
                     </Paper>
                     <Paper >
-                        <h1>Social Ear SocialEarPiece</h1>
-                        <img src={SocialEarPiece} style={{ maxHeight: "340px", maxWidth: "300px" }}></img>
+                        <h2>Social Ear SocialEarPiece</h2>
+                        <img src={SocialEarPiece} alt="Social Ear SocialEarPiece" style={{ maxHeight: "340px", maxWidth: "300px" }}></img>
                         <p>Description of the project goes here!</p>
                     </Paper>
                     <Paper >
-                        <h1>Druggle</h1>
-                        <img src={Druggler} style={{ maxHeight: "340px", maxWidth: "300px" }}></img>
+                        <h2>Druggler</h2>
+                        <img src={Druggler} alt="Druggler" style={{ maxHeight: "340px", maxWidth: "300px" }}></img>
                         <p>Description of the project goes here!</p>
                     </Paper>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <Paper >
-                        <h1>Movie Meme Mash</h1>
-                        <img src={MovieMeme} style={{ maxHeight: "340px", maxWidth: "300px" }}></img>
+                        <h2>Movie Meme Mash</h2>
+                        <img src={MovieMeme} alt="Movie Meme Mash" style={{ maxHeight: "340px", maxWidth: "300px" }}></img>
                         <p>Description of the project goes here!</p>
                     </Paper>
                     <Paper >
-                        <h1>MongoDB PWA Work Out Tracker</h1>
-                        <img src={WrkOut} style={{ maxHeight: "340px", maxWidth: "300px" }}></img>
+                        <h2>Weather App</h2>
+                        <img src={WrkOut}  alt="Weather App" style={{ maxHeight: "340px", maxWidth: "300px" }}></img>
                         <p>Description of the project goes here!</p>
                     </Paper>
                     <Paper >
-                        <h1>PWA Budget Tracker</h1>
-                        <img src={BdgtTrker} style={{ maxHeight: "340px", maxWidth: "300px" }}></img>
+                        <h2>Node.js GitHub Profile Generator</h2>
+                        <img src={BdgtTrker} alt="Node.js GitHub Profile Generator" style={{ maxHeight: "340px", maxWidth: "300px" }}></img>
                         <p>Description of the project goes here!</p>
                     </Paper>
                 </Grid>
