@@ -1,8 +1,13 @@
 import React from "react";
+import ProjectCard from "../Components/ProjectCards"
 
 function Projects() {
   return (
-    <h1>Projects!</h1>
+    <div>
+      <h1>Projects!</h1>
+      <ProjectCard />
+    </div>
+
   )
 }
 
