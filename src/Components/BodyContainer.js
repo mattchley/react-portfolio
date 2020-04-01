@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import MattProfile from "../Images/ProfilePic/profile.jpg"
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 
+import API from "../Utils/API";
+
 
 function BodyContainer() {
+
+    const [repos, setRepos] = useState([]);
+
+    const loadRepos = () => {
+        API.getRepos()
+            .then(res => {
+                setRepos(res.data);
+                console.log(repos)
+            })
+            .catch(err => console.log(err));
+    };
+
+
     return (
         <Container maxWidth="lg">
             <Grid container spacing={0} justify={"space-evenly"}>
@@ -26,7 +41,7 @@ function BodyContainer() {
                 </Grid>
             </Grid>
             <div>
-                <h1>WHAT IM CURRENTLY WORKING ON</h1>
+                <h1>WHAT IM CURRENTLY WORKING ON</h1> <Button  onClick={loadRepos}>REPOS</Button>
                 <p>I'd like to have a live feed of github repo posts??? Look for an API</p>
             </div>
         </Container>
