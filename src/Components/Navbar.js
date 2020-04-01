@@ -12,11 +12,11 @@ function NavBar() {
     return (
         <nav style={{ backgroundColor: "lightblue" }}>
             <Container>
-                <Grid container spacing={12}>
-                    <Grid item xs={12} sm={10}>
+                <Grid container spacing={0}>
+                    <Grid item xs={12} sm={9}>
                         <Typography color="textPrimary">MATTHEW ATCHLEY</Typography>
                     </Grid>
-                    <Grid item xs={12} sm={2}>
+                    <Grid item xs={12} sm={3}>
                         <Breadcrumbs aria-label="breadcrumb">
                             <Link
                                 className="link" to="/"

@@ -1,5 +1,5 @@
 import React from "react";
-import ResumeContainer from "../Components/Resume"
+import ResumeContainer from "../Components/ResumeContainer"
 import Container from '@material-ui/core/Container';
 
 function Resume() {
