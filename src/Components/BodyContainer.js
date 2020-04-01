@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MattProfile from "../Images/ProfilePic/profile.jpg"
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -16,11 +16,34 @@ function BodyContainer() {
         API.getRepos()
             .then(res => {
                 setRepos(res.data);
-                console.log(repos)
+                // so far 24 repos that need to be compared and contrasted
+                // will need the for ... of loop method from druggler on here
+                // have a modal pop up every time that an update is made?
+
+                console.log(res.data[0].created_at)
+                console.log(res.data[0].updated_at)
             })
             .catch(err => console.log(err));
     };
 
+    // useEffect(() => {
+    //     if (!search) {
+    //       return;
+    //     }
+    
+    //     API.searchTerms(search)
+    //       .then(res => {
+    //         if (res.data.length === 0) {
+    //           throw new Error("No results found.");
+    //         }
+    //         if (res.data.status === "error") {
+    //           throw new Error(res.data.message);
+    //         }
+    //         setTitle(res.data[1][0]);
+    //         setUrl(res.data[3][0]);
+    //       })
+    //       .catch(err => setError(err));
+    //   }, [search]);
 
     return (
         <Container maxWidth="lg">
@@ -42,7 +65,16 @@ function BodyContainer() {
             </Grid>
             <div>
                 <h1>WHAT IM CURRENTLY WORKING ON</h1> <Button  onClick={loadRepos}>REPOS</Button>
-                <p>I'd like to have a live feed of github repo posts??? Look for an API</p>
+                {repos.length ? (
+                <dvi>
+                    {repos.map(repo =>
+                        (
+                            <div></div>
+                        ))}
+                </dvi>
+                ) : (
+                    <h2>There are no current repos.</h2>
+                )}
             </div>
         </Container>
     )
