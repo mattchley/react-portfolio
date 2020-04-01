@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import About from '../Pages/About';
 import Projects from '../Pages/Projects';
 import Contact from '../Pages/Contact';
+import Resume from '../Pages/Resume';
 
 function MainContainer() {
     return (
@@ -22,6 +23,10 @@ function MainContainer() {
                         
                         <Route path="/contact">
                             <Contact />
+                        </Route>
+
+                        <Route path="/resume">
+                            <Resume />
                         </Route>
                     </Switch>
                 </div>

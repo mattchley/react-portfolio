@@ -24,9 +24,12 @@ function NavBar() {
                             <Link
                                 className="link" to="/projects"
                             > Projects </Link>
-                            {/* <Link
+                            <Link
                                 className="link" to="/contact"
-                            > Contact </Link> */}
+                            > Contact </Link>
+                            <Link
+                                className="link" to="/resume"
+                            > Resume </Link>
                         </Breadcrumbs>
                     </Grid>
                 </Grid>
