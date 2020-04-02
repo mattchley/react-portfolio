@@ -11,26 +11,51 @@ import API from "../Utils/API";
 function BodyContainer() {
 
     const [repos, setRepos] = useState([]);
+    const [commits, setCommits] = useState([])
 
     const loadRepos = () => {
         API.getRepos()
             .then(res => {
-                setRepos(res.data);
-                // so far 24 repos that need to be compared and contrasted
-                // will need the for ... of loop method from druggler on here
-                // have a modal pop up every time that an update is made?
+                const results = res.data;
 
-                console.log(res.data[0].created_at)
-                console.log(res.data[0].updated_at)
+                let holder = [];
+
+                for (let index of results) {
+                    let repoResults = index
+                    holder.push({
+                        id: repoResults.id,
+                        name: repoResults.name,
+                        url: repoResults.html_url,
+                        started: repoResults.created_at,
+                        updated: repoResults.updated_at,
+                        commits: repoResults.commits_url.replace("{/sha}", "")
+                    });
+                }
+                setRepos(holder);
             })
             .catch(err => console.log(err));
     };
+
+    const loadCommits = () => {
+        // needs to iterate searches by putting the for ... of loop outside of the API search
+        API.getCommits("Druggler")
+            .then(res => {
+                setCommits({
+                    id: res.data[0].sha,
+                    author: res.data[0].commit.author.name,
+                    message: res.data[0].commit.message
+                });
+            })
+            .catch(err => console.log(err));
+    };
+
+    // need a second API for commits/comments that is based on a framework of https://api.github.com/repos/mattchley/{project name}/commits
 
     // useEffect(() => {
     //     if (!search) {
     //       return;
     //     }
-    
+
     //     API.searchTerms(search)
     //       .then(res => {
     //         if (res.data.length === 0) {
@@ -64,17 +89,25 @@ function BodyContainer() {
                 </Grid>
             </Grid>
             <div>
-                <h1>WHAT IM CURRENTLY WORKING ON</h1> <Button  onClick={loadRepos}>REPOS</Button>
+                <Button onClick={loadRepos}>WHAT IM CURRENTLY WORKING ON</Button>
+                <Button onClick={loadCommits}>WHAT IM CURRENTLY WORKING ON2</Button>
                 {repos.length ? (
-                <dvi>
-                    {repos.map(repo =>
-                        (
-                            <div></div>
-                        ))}
-                </dvi>
+                    <dvi>
+                        {repos.map(repo =>
+                            (
+                                <div>
+                                    <h3 key={repo.id}>
+                                        Name:
+                                    <a href={repo.url} alt={repo.name + " url"}>{repo.name}</a>
+                                    </h3>
+                                    <h5>{repo.updated}</h5>
+                                    <h5>{repo.started}</h5>
+                                </div>
+                            ))}
+                    </dvi>
                 ) : (
-                    <h2>There are no current repos.</h2>
-                )}
+                        <h2>There are no current repos.</h2>
+                    )}
             </div>
         </Container>
     )
