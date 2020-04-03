@@ -11,64 +11,51 @@ import API from "../Utils/API";
 function BodyContainer() {
 
     const [repos, setRepos] = useState([]);
-    const [commits, setCommits] = useState([])
+    const [commits, setCommits] = useState([]);
 
-    const loadRepos = () => {
+    useEffect(() => {
         API.getRepos()
             .then(res => {
-                const results = res.data;
-
+                const gitRepos = res.data;
                 let holder = [];
-
-                for (let index of results) {
+                for (let index of gitRepos) {
                     let repoResults = index
                     holder.push({
                         id: repoResults.id,
                         name: repoResults.name,
                         url: repoResults.html_url,
-                        started: repoResults.created_at,
-                        updated: repoResults.updated_at,
-                        commits: repoResults.commits_url.replace("{/sha}", "")
+                        date: repoResults.updated_at
                     });
                 }
                 setRepos(holder);
             })
             .catch(err => console.log(err));
-    };
+
+    }, []);
 
     const loadCommits = () => {
-        // needs to iterate searches by putting the for ... of loop outside of the API search
-        API.getCommits("Druggler")
-            .then(res => {
-                setCommits({
-                    id: res.data[0].sha,
-                    author: res.data[0].commit.author.name,
-                    message: res.data[0].commit.message
-                });
-            })
-            .catch(err => console.log(err));
+
+        for (let index of repos) {
+            let repoName = index.name
+            API.getCommits(repoName)
+                .then(res => {
+                    const gitCommits = res.data;
+                    // runs throught all the names
+                    let holder2 = [];
+                    holder2.push({
+                        id: gitCommits[0].sha,
+                        name: repoName,
+                        author: gitCommits[0].commit.author.name,
+                        message: gitCommits[0].commit.message,
+                        date: gitCommits[0].commit.author.date
+                    });
+                    setCommits(holder2)
+                })
+                .catch(err => console.log(err));
+
+        }
+
     };
-
-    // need a second API for commits/comments that is based on a framework of https://api.github.com/repos/mattchley/{project name}/commits
-
-    // useEffect(() => {
-    //     if (!search) {
-    //       return;
-    //     }
-
-    //     API.searchTerms(search)
-    //       .then(res => {
-    //         if (res.data.length === 0) {
-    //           throw new Error("No results found.");
-    //         }
-    //         if (res.data.status === "error") {
-    //           throw new Error(res.data.message);
-    //         }
-    //         setTitle(res.data[1][0]);
-    //         setUrl(res.data[3][0]);
-    //       })
-    //       .catch(err => setError(err));
-    //   }, [search]);
 
     return (
         <Container maxWidth="lg">
@@ -89,25 +76,47 @@ function BodyContainer() {
                 </Grid>
             </Grid>
             <div>
-                <Button onClick={loadRepos}>WHAT IM CURRENTLY WORKING ON</Button>
                 <Button onClick={loadCommits}>WHAT IM CURRENTLY WORKING ON2</Button>
-                {repos.length ? (
-                    <dvi>
-                        {repos.map(repo =>
-                            (
-                                <div>
-                                    <h3 key={repo.id}>
-                                        Name:
+                <Grid container spacing={0} justify={"space-evenly"}>
+                    <Grid item xs={12} md={6}>
+                        {repos.length ? (
+                            <div>
+                                {repos.map(repo =>
+                                    (
+                                        <div>
+                                            <h3 key={repo.id}>
+                                                Name:
                                     <a href={repo.url} alt={repo.name + " url"}>{repo.name}</a>
-                                    </h3>
-                                    <h5>{repo.updated}</h5>
-                                    <h5>{repo.started}</h5>
-                                </div>
-                            ))}
-                    </dvi>
-                ) : (
-                        <h2>There are no current repos.</h2>
-                    )}
+                                            </h3>
+                                            <p>Latest Commit: {repo.date}</p>
+                                        </div>
+                                    ))}
+                            </div>
+                        ) : (
+                                <h2>There is something wrong. 404</h2>
+                            )}
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                        {commits.length ? (
+                            <div>
+                                {commits.map(commit =>
+                                    (
+                                        <div>
+                                            <h3 key={commit.id}> {commit.name} </h3>
+                                            <h2>Author: {commit.author}</h2>
+                                            <h2> Message : {commit.message}</h2>
+                                            <p>Latest Commit: {commit.date}</p>
+                                        </div>
+                                    ))}
+                            </div>
+                        ) : (
+                                <h2>There is something wrong. 404</h2>
+                            )}
+                    </Grid>
+
+                </Grid>
+
+
             </div>
         </Container>
     )
