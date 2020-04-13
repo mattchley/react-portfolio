@@ -9,7 +9,7 @@ function About() {
         <Container>
             <h1 style={{ color: "red" }}>About Me!</h1>
             <BodyContainer />
-        {/* <Tester /> this will hopefully be used to figure out how to sort at the same time as a use state*/ }
+        <Tester />
         <GitFeed />
         </Container>
     )

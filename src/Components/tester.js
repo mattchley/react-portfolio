@@ -24,19 +24,14 @@ const bands = [
   },
 ];
 
-function  Tester () {
+function Tester() {
   const [data, setData] = useState([]);
-  const [sortType, setSortType] = useState({});
+
 
   useEffect(() => {
-    const sortArray = ()=> {
-      const sortProperty = 'members';
-      const sorted = [...bands].sort((a, b) => b[sortProperty] - a[sortProperty]);
-      setData(sorted);
-    };
-
-    sortArray(sortType);
-  }, [sortType]); 
+    const sorted = [...bands].sort((a, b) => b['formed_in'] - a['formed_in']);
+    setData(sorted);
+  }, []);
 
   return (
     <div className="App">

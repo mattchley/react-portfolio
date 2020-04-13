@@ -14,18 +14,24 @@ function GitFeed() {
     useEffect(() => {
         API.getRepos()
             .then(res => {
-                const gitRepos = res.data;
                 let holder = [];
-                for (let index of gitRepos) {
-                    let repoResults = index
+                
+                
+                for (let index of res.data) {
+                    let results = index
+                    let parsedDate = Date.parse(results.updated_at)
                     holder.push({
-                        id: repoResults.id,
-                        name: repoResults.name,
-                        url: repoResults.html_url,
-                        date: repoResults.updated_at
+                        id: results.id,
+                        name: results.name,
+                        url: results.html_url,
+                        date: parsedDate
                     });
+                    
                 }
-                setRepos(holder);
+                const sorted = holder.sort((a, b) => b['date'] - a['date']);
+                console.log(sorted)
+                setRepos(sorted);
+
             })
             .catch(err => console.log(err));
 
@@ -38,15 +44,14 @@ function GitFeed() {
             let repoName = index.name
             API.getCommits(repoName)
                 .then(res => {
-                    const gitCommits = res.data;
                     // runs throught all the names
                     let holder2 = [];
                     holder2.push({
-                        id: gitCommits[0].sha,
+                        id: res.data[0].sha,
                         name: repoName,
-                        author: gitCommits[0].commit.author.name,
-                        message: gitCommits[0].commit.message,
-                        date: gitCommits[0].commit.author.date
+                        author: res.data[0].commit.author.name,
+                        message: res.data[0].commit.message,
+                        date: res.data[0].commit.author.date
                     });
                     holder3.push(holder2)
                 })
@@ -61,7 +66,7 @@ function GitFeed() {
         console.log(commits)
     }
 
-    
+
     return (
         <div>
             {/* <Button onClick={loadCommits}>WHAT IM CURRENTLY WORKING ON2</Button>
