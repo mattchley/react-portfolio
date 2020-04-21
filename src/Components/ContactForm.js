@@ -1,31 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import axios from 'axios';
+import emailjs from 'emailjs-com';
 
 function ContactForm() {
 
-    const [email, setEmail] = useState();
-    const [name, setName] = useState();
-    const [comment, setComment] = useState();
-
-    const handleSubmit = (e) => {
+    const sendEmail = (e) => {
         e.preventDefault();
-        console.log(email, name, comment)
-        
-        const resetForm =() => {
-            setEmail('')
-            setName('')
-            setComment('')
 
-        }
-        resetForm()
+        emailjs.sendForm('mattchley_gmail_com', 'template_XY6Pmm18', e.target, 'user_CwYcGz0aUZryjiqUO1oC0')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
     }
+
 
     return (
         <Container maxWidth="lg">
-            <form noValidate autoComplete="off">
+            <form noValidate autoComplete="off" onSubmit={sendEmail}>
                 <h4>Email Address</h4>
                 <TextField
                     type='text'
@@ -33,8 +27,8 @@ function ContactForm() {
                     label="name@example.com"
                     variant="filled"
                     fullWidth="true"
-                    value={email}
-                    onChange={e => setEmail(e.target.value.trim())} />
+                    name="email"
+                />
                 <h4>Name</h4>
                 <TextField
                     type='text'
@@ -42,8 +36,8 @@ function ContactForm() {
                     label="Jordan Rogers"
                     variant="filled"
                     fullWidth="true"
-                    value={name}
-                    onChange={e => setName(e.target.value.trim())} />
+                    name="name"
+                />
                 <h4>Comment</h4>
                 <TextField
                     type='text'
@@ -51,9 +45,9 @@ function ContactForm() {
                     label="Your message here..."
                     variant="filled"
                     fullWidth="true"
-                    value={comment}
-                    onChange={e => setComment(e.target.value.trim())} />
-                <Button color="primary" variant="contained" onClick={handleSubmit}>SUBMIT</Button>
+                    name="comment"
+                />
+                <input type="submit" value="Send" />
             </form>
         </Container>
     )
