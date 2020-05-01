@@ -42,18 +42,18 @@ function GitFeed() {
 
     return (
         <div>
-            <h2>My Repos</h2>
+            <h2>Top 5 Projects I'm working on</h2>
             <Grid container spacing={0} justify={"space-evenly"}>
                 <Grid item xs={12} md={6}>
                     {repos.length ? (
                         <div>
-                            {repos.map(repo =>
+                            {repos.slice(0, 5).map(repo =>
                                 (
                                     <div>
-                                        <h3 key={repo.id}>
+                                        <h2 key={repo.id}>
                                             Name:
                                     <a href={repo.url} alt={repo.name + " url"}>{repo.name}</a>
-                                        </h3>
+                                        </h2>
                                         <p>Latest Commit: {repo.date}</p>
                                     </div>
                                 ))}
@@ -65,12 +65,13 @@ function GitFeed() {
                 <Grid item xs={12} md={6}>
                     {commits.length ? (
                         <div>
-                            {commits.map(commit =>
+                            {commits.slice(0, 5).map(commit =>
                                 (
                                     <div>
-                                        <h3 key={commit.id}> {commit.name} </h3>
+
                                         <h2>Author: {commit.author}</h2>
-                                        <h2>Message: {commit.message}</h2>
+                                        <p>Message:
+                                        {commit.message}</p>
 
                                     </div>
                                 ))}

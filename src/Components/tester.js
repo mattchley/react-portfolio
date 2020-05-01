@@ -1,51 +1,30 @@
-import React, { useState, useEffect } from 'react';
-
-const bands = [
-  {
-    id: 1,
-    name: 'Nightwish',
-    albums: 9,
-    members: 6,
-    formed_in: 1996,
-  },
-  {
-    id: 2,
-    name: 'Metallica',
-    albums: 10,
-    members: 4,
-    formed_in: 1981,
-  },
-  {
-    id: 3,
-    name: 'Nirvana',
-    albums: 3,
-    members: 3,
-    formed_in: 1987,
-  },
-];
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 
 function Tester() {
-  const [data, setData] = useState([]);
 
+  const user = 'mattchley';
+  const githubToken = 'b310da4ab369999c52c738e8757be7901ff58d0f';
 
   useEffect(() => {
-    const sorted = [...bands].sort((a, b) => b['formed_in'] - a['formed_in']);
-    setData(sorted);
-  }, []);
 
+    axios({ 
+      method:'get',
+      url: `https://api.github.com/users/${user}/repos`,
+      headers: {
+        'Authorization': `Basic ${githubToken}`
+      }
+    })
+      .then(res => {
+        console.log(res.data)
+      })
+
+  })
   return (
-    <div className="App">
-
-      {data.map(band => (
-        <div key={band.id} style={{ margin: '30px' }}>
-          <div>{`Band: ${band.name}`}</div>
-          <div>{`Albums: ${band.albums}`}</div>
-          <div>{`Members: ${band.members}`}</div>
-          <div>{`Year of founding: ${band.formed_in}`}</div>
-        </div>
-      ))}
+    <div>
+      test
     </div>
-  );
+  )
 }
 
 export default Tester
