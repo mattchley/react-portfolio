@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 import API from "../Utils/API";
 
@@ -15,12 +17,11 @@ function GitFeed() {
             let starterArray = await []
             for (let index of starter.data) {
                 let results = index
-                let parsedDate = Date.parse(results.updated_at)
                 starterArray.push({
                     id: results.id,
                     name: results.name,
                     url: results.html_url,
-                    date: parsedDate
+                    date: results.updated_at
                 });
             }
             const sorted = await starterArray.sort((a, b) => b['date'] - a['date']);
@@ -49,13 +50,15 @@ function GitFeed() {
                         <div>
                             {repos.slice(0, 5).map(repo =>
                                 (
-                                    <div>
-                                        <h2 key={repo.id}>
-                                            Name:
+                                    <Card>
+                                        <CardContent>
+                                            <h2 key={repo.id}>
+                                                Name:
                                     <a href={repo.url} alt={repo.name + " url"}>{repo.name}</a>
-                                        </h2>
-                                        <p>Latest Commit: {repo.date}</p>
-                                    </div>
+                                            </h2>
+                                            <p>Latest Commit: {repo.date}</p>
+                                        </CardContent>
+                                    </Card>
                                 ))}
                         </div>
                     ) : (
@@ -67,13 +70,13 @@ function GitFeed() {
                         <div>
                             {commits.slice(0, 5).map(commit =>
                                 (
-                                    <div>
-
-                                        <h2>Author: {commit.author}</h2>
-                                        <p>Message:
+                                    <Card>
+                                        <CardContent>
+                                            <h2>Author: {commit.author}</h2>
+                                            <p>Message:
                                         {commit.message}</p>
-
-                                    </div>
+                                        </CardContent>
+                                    </Card>
                                 ))}
                         </div>
                     ) : (
