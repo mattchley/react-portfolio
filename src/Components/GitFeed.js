@@ -5,7 +5,10 @@ import CardContent from '@material-ui/core/CardContent';
 
 import API from "../Utils/API";
 
-
+// 5/5 needs to have a loading element while gitfeed runs
+// find a way to interlock states together
+// make them collapsable components that show the time
+// 
 function GitFeed() {
 
     const [repos, setRepos] = useState([]);
@@ -24,7 +27,9 @@ function GitFeed() {
                     date: results.updated_at
                 });
             }
-            const sorted = await starterArray.sort((a, b) => b['date'] - a['date']);
+            const sorted = await starterArray.sort(function (a, b) {
+                return new Date(b.date) - new Date(a.date);
+            });
 
             let resultsArray = await []
             for (let index of sorted) {
@@ -33,7 +38,6 @@ function GitFeed() {
                     author: messages.data[0].commit.author.name,
                     message: messages.data[0].commit.message
                 })
-                console.log(resultsArray)
             }
             setRepos(starterArray)
             setCommits(resultsArray)
@@ -45,7 +49,7 @@ function GitFeed() {
         <div>
             <h2>Top 5 Projects I'm working on</h2>
             <Grid container spacing={0} justify={"space-evenly"}>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={6} md={6}>
                     {repos.length ? (
                         <div>
                             {repos.slice(0, 5).map(repo =>
@@ -65,7 +69,7 @@ function GitFeed() {
                             <h2>There is something wrong. 404</h2>
                         )}
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={6} md={6}>
                     {commits.length ? (
                         <div>
                             {commits.slice(0, 5).map(commit =>

@@ -18,63 +18,60 @@ function ProjectCard() {
                     <Grid>
                         <Paper >
                             <h2>Druggler</h2>
-                            <img src={Druggler} alt="Druggler" style={{ maxHeight: "340px"}} ></img>
-                            <br/>
-                            <a href="https://github.com/mattchley/Druggler">GitHub Repo</a>
-                            <br/>
-                            <a href="https://druggler.herokuapp.com/">Live Site</a>
+                            <img src={Druggler} alt="Druggler" style={{ maxHeight: "340px" }} ></img>
+                            <br />
                             <p>Tracks drug interactions and times to take medication.</p>
+                            <a href="https://github.com/mattchley/Druggler"><img src="https://img.icons8.com/ios-glyphs/60/000000/github.png" /></a>
+                            <a href="https://druggler.herokuapp.com/"><img src="https://img.icons8.com/ios/50/000000/heroku.png" /></a>
                         </Paper>
                     </Grid>
                     <Grid>
                         <Paper >
                             <h2>Movie Meme Mash</h2>
-                            <img src={MovieMeme} alt="Movie Meme Mash" style={{ maxHeight: "340px"}} ></img>
-                            <br/>
-                            <a href="https://github.com/mattchley/Movie-Meme-Mash">GitHub Repo</a>
-                            <br/>
-                            <a href="https://test-memms.herokuapp.com/">Live Site</a>
+                            <img src={MovieMeme} alt="Movie Meme Mash" style={{ maxHeight: "340px" }} ></img>
+                            <br />
                             <p>Simple movie review app where the client logs in and leaves a comment and gif as a review.</p>
+                            <a href="https://github.com/mattchley/Movie-Meme-Mash"><img src="https://img.icons8.com/ios-glyphs/60/000000/github.png" /></a>
+                            <a href="https://test-memms.herokuapp.com/"><img src="https://img.icons8.com/ios/50/000000/heroku.png" /></a>
                         </Paper>
                     </Grid>
                     <Grid>
                         <Paper >
                             <h2>Node.js SQL EmployeeDB</h2>
-                            <img src={EmployDB} alt="Node.js SQL EmployeeDB" style={{ maxHeight: "340px"}} ></img>
-                            <br/>
-                            <a href="https://github.com/mattchley/Employee_Summary">GitHub Repo</a>
+                            <img src={EmployDB} alt="Node.js SQL EmployeeDB" style={{ maxHeight: "340px" }} ></img>
+                            <br />
                             <p>Node Js and SQL app that tracks employees by department.</p>
+                            <a href="https://github.com/mattchley/Employee_Summary"><img src="https://img.icons8.com/ios-glyphs/60/000000/github.png" /></a>
                         </Paper>
                     </Grid>
                     <Grid>
                         <Paper >
                             <h2>Social Ear Piece</h2>
-                            <img src={SocialEarPiece} alt="Social Ear Piece" style={{ maxHeight: "340px"}} ></img>
-                            <br/>
-                            <a href="https://github.com/Louis100X/Social_Ear_Whisper">GitHub Repo</a>
-                            <br/>
-                            <a href="https://social-ear-whisper.herokuapp.com/">Live Site</a>
+                            <img src={SocialEarPiece} alt="Social Ear Piece" style={{ maxHeight: "340px" }} ></img>
+                            <br />
                             <p>Supply of funny lines and interesting quotes.</p>
+                            <a href="https://github.com/Louis100X/Social_Ear_Whisper"><img src="https://img.icons8.com/ios-glyphs/60/000000/github.png" /></a>
+                            <a href="https://social-ear-whisper.herokuapp.com/"><img src="https://img.icons8.com/ios/50/000000/heroku.png" /></a>
                         </Paper>
                     </Grid>
                     <Grid>
                         <Paper >
                             <h2>WrkOutTrkr</h2>
-                            <img src={WrkOut} alt="WrkOutTrkr" style={{ maxHeight: "340px"}} ></img>
-                            <br/>
-                            <a href="https://github.com/mattchley/WrkOutTrkr">GitHub Repo</a>
-                            <br/>
-                            <a href="https://wrkouttrkr.herokuapp.com/">Live Site</a>
+                            <img src={WrkOut} alt="WrkOutTrkr" style={{ maxHeight: "340px" }} ></img>
+                            <br />
                             <p>MongoDB based work out tracker.</p>
+                            <a href="https://github.com/mattchley/WrkOutTrkr"><img src="https://img.icons8.com/ios-glyphs/60/000000/github.png" /></a>
+                            <a href="https://wrkouttrkr.herokuapp.com/"><img src="https://img.icons8.com/ios/50/000000/heroku.png" /></a>
                         </Paper>
                     </Grid>
                     <Grid>
                         <Paper >
                             <h2>Node.js GitHub Profile Generator</h2>
                             <img src={BdgtTrker} alt="Node.js GitHub Profile Generator" style={{ maxHeight: "340px", maxWidth: "300px" }} ></img>
-                            <br/>
-                            <a href="https://github.com/mattchley/GitHubeNodeProfile">GitHub Repo</a>
+                            <br />
                             <p>Simple PDF Generator based on GitHub user data</p>
+                            <a href="https://github.com/mattchley/GitHubeNodeProfile"><img src="https://img.icons8.com/ios-glyphs/60/000000/github.png" /></a>
+
                         </Paper>
                     </Grid>
                 </Grid>
