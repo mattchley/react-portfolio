@@ -6,7 +6,6 @@ import MovieMeme from "../Images/ProjectPics/Movie-Meme-Mash.png";
 import WrkOut from "../Images/ProjectPics/WrkOutTrkr.png";
 import BdgtTrker from "../Images/ProjectPics/BudgetTrckrOFF.png";
 import Container from '@material-ui/core/Container';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';

@@ -11,8 +11,9 @@ import API from "../Utils/API";
 // 
 function GitFeed() {
 
-    const [repos, setRepos] = useState([]);
-    const [commits, setCommits] = useState([]);
+    // const [repos, setRepos] = useState([]);
+    // const [commits, setCommits] = useState([]);
+    const [gitFeed, setGitFeed] = useState([]);
     useEffect(() => {
 
         async function getFeed() {
@@ -39,16 +40,33 @@ function GitFeed() {
                     message: messages.data[0].commit.message
                 })
             }
-            setRepos(starterArray)
-            setCommits(resultsArray)
+            // setRepos(starterArray)
+            // setCommits(resultsArray)
+            setGitFeed([
+                {
+                    repos: starterArray,
+                    commits: resultsArray
+                }
+            ])
         }
         getFeed()
     }, []);
 
+    const tester = () => {
+        console.log(gitFeed.slice(0, 5).map(obj => obj.repos))
+    }
+
     return (
         <div>
             <h2>Top 5 Projects I'm working on</h2>
-            <Grid container spacing={0} justify={"space-evenly"}>
+            <button onClick={tester}>Test</button>
+
+            {gitFeed.map(obj =>
+                obj.repos.slice(0, 5).map(obj =>
+                    <p>{obj.name}</p>
+                )
+            )}
+            {/* <Grid container spacing={0} justify={"space-evenly"}>
                 <Grid item xs={6} md={6}>
                     {repos.length ? (
                         <div>
@@ -88,7 +106,7 @@ function GitFeed() {
                         )}
                 </Grid>
 
-            </Grid>
+            </Grid> */}
 
 
         </div>

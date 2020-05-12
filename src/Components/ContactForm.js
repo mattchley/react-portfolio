@@ -41,6 +41,7 @@ function ContactForm() {
                     fullWidth="true"
                     name="email"
                     value={email}
+                    onChange={e => setEmail(e.target.value.trim())}
                 />
                 <h4>Name</h4>
                 <TextField
@@ -51,6 +52,7 @@ function ContactForm() {
                     fullWidth="true"
                     name="name"
                     value={name}
+                    onChange={e => setName(e.target.value.trim())}
                 />
                 <h4>Comment</h4>
                 <TextField
@@ -61,6 +63,8 @@ function ContactForm() {
                     fullWidth="true"
                     name="comment"
                     value={comment}
+                    onChange={e => setComment(e.target.value.trim())}
+                    // style={{height: "130px"}}
                 />
                 <input type="submit" value="Send" />
             </form>
