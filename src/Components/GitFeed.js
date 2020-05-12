@@ -4,112 +4,118 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
 import API from "../Utils/API";
-
-// 5/5 needs to have a loading element while gitfeed runs
-// find a way to interlock states together
 // make them collapsable components that show the time
-// 
 function GitFeed() {
 
-    // const [repos, setRepos] = useState([]);
-    // const [commits, setCommits] = useState([]);
     const [gitFeed, setGitFeed] = useState([]);
     useEffect(() => {
 
         async function getFeed() {
+            let idArray = await []
+            let nameArray = await []
+            let urlArray = await []
+            let dateArray = await []
+            let authorArray = await []
+            let messageArray = await []
             const starter = await API.getRepos()
-            let starterArray = await []
-            for (let index of starter.data) {
-                let results = index
-                starterArray.push({
-                    id: results.id,
-                    name: results.name,
-                    url: results.html_url,
-                    date: results.updated_at
-                });
-            }
-            const sorted = await starterArray.sort(function (a, b) {
-                return new Date(b.date) - new Date(a.date);
-            });
+            let sorted = starter.data.sort(function (a, b) {
+                return new Date(b.updated_at) - new Date(a.updated_at)
 
-            let resultsArray = await []
+            })
+            for (let index of sorted) {
+                idArray.push(
+                    index.id
+                );
+                nameArray.push(
+                    index.name
+                );
+                urlArray.push(
+                    index.html_url,
+                );
+                dateArray.push(
+                    index.updated_at
+                );
+            }
             for (let index of sorted) {
                 const messages = await API.getCommits(index.name)
-                resultsArray.push({
-                    author: messages.data[0].commit.author.name,
-                    message: messages.data[0].commit.message
-                })
+                authorArray.push(
+                    messages.data[0].commit.author.name
+                );
+                messageArray.push(
+                    messages.data[0].commit.message
+                );
             }
-            // setRepos(starterArray)
-            // setCommits(resultsArray)
             setGitFeed([
+                ...gitFeed,
                 {
-                    repos: starterArray,
-                    commits: resultsArray
+                    id: idArray,
+                    name: nameArray,
+                    url: urlArray,
+                    date: dateArray,
+                    author: authorArray,
+                    message: messageArray
                 }
             ])
         }
         getFeed()
-    }, []);
-
-    const tester = () => {
-        console.log(gitFeed.slice(0, 5).map(obj => obj.repos))
-    }
+    });
 
     return (
-        <div>
-            <h2>Top 5 Projects I'm working on</h2>
-            <button onClick={tester}>Test</button>
+        <Grid container spacing={0} justify={"space-evenly"}>
 
-            {gitFeed.map(obj =>
-                obj.repos.slice(0, 5).map(obj =>
-                    <p>{obj.name}</p>
-                )
-            )}
-            {/* <Grid container spacing={0} justify={"space-evenly"}>
-                <Grid item xs={6} md={6}>
-                    {repos.length ? (
-                        <div>
-                            {repos.slice(0, 5).map(repo =>
-                                (
-                                    <Card>
-                                        <CardContent>
-                                            <h2 key={repo.id}>
-                                                Name:
-                                    <a href={repo.url} alt={repo.name + " url"}>{repo.name}</a>
-                                            </h2>
-                                            <p>Latest Commit: {repo.date}</p>
-                                        </CardContent>
-                                    </Card>
-                                ))}
-                        </div>
-                    ) : (
-                            <h2>There is something wrong. 404</h2>
-                        )}
-                </Grid>
-                <Grid item xs={6} md={6}>
-                    {commits.length ? (
-                        <div>
-                            {commits.slice(0, 5).map(commit =>
-                                (
-                                    <Card>
-                                        <CardContent>
-                                            <h2>Author: {commit.author}</h2>
-                                            <p>Message:
-                                        {commit.message}</p>
-                                        </CardContent>
-                                    </Card>
-                                ))}
-                        </div>
-                    ) : (
-                            <h2>There is something wrong. 404</h2>
-                        )}
-                </Grid>
+            {gitFeed.length ? (
+                gitFeed.slice(0, 5).map(obj =>
+                    (
+                        <Grid item xs={6} md={10}>
+                            <h1>Current Projects</h1>
+                            <Card>
+                                <CardContent>
+                                    <h2 key={obj.id[0]}>Name:<a href={obj.url[0]} alt={obj.name[0] + " url"}>{obj.name[0]}</a></h2>
+                                    <h4>Author:{obj.author[0]}</h4>
+                                    <p>Message: {obj.message[0]}</p>
+                                    <sub>Date: {obj.date[0]}</sub>
+                                </CardContent>
+                            </Card>
+                            <Card>
+                                <CardContent>
+                                    <h2 key={obj.id[1]}>Name:<a href={obj.url[1]} alt={obj.name[1] + " url"}>{obj.name[1]}</a></h2>
+                                    <h4>Author:{obj.author[1]}</h4>
+                                    <p>Message: {obj.message[1]}</p>
+                                    <sub>Date: {obj.date[1]}</sub>
+                                </CardContent>
+                            </Card>
+                            <Card>
+                                <CardContent>
+                                    <h2 key={obj.id[2]}>Name:<a href={obj.url[2]} alt={obj.name[2] + " url"}>{obj.name[2]}</a></h2>
+                                    <h4>Author:{obj.author[2]}</h4>
+                                    <p>Message: {obj.message[2]}</p>
+                                    <sub>Date: {obj.date[2]}</sub>
+                                </CardContent>
+                            </Card>
+                            <Card>
+                                <CardContent>
+                                    <h2 key={obj.id[3]}>Name:<a href={obj.url[3]} alt={obj.name[3] + " url"}>{obj.name[3]}</a></h2>
+                                    <h4>Author:{obj.author[3]}</h4>
+                                    <p>Message: {obj.message[3]}</p>
+                                    <sub>Date: {obj.date[3]}</sub>
+                                </CardContent>
+                            </Card>
+                            <Card>
+                                <CardContent>
+                                    <h2 key={obj.id[4]}>Name:<a href={obj.url[4]} alt={obj.name[4] + " url"}>{obj.name[4]}</a></h2>
+                                    <h4>Author:{obj.author[4]}</h4>
+                                    <p>Message: {obj.message[4]}</p>
+                                    <sub>Date: {obj.date[4]}</sub>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                    ))
 
-            </Grid> */}
+            ) : (
+                    <h2>Loading Current Projects</h2>
+                )}
 
-
-        </div>
+        </Grid>
     )
 }
 export default GitFeed
