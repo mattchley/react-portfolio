@@ -4,6 +4,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 
 import API from "../Utils/API";
+
+// 5/5 needs to have a loading element while gitfeed runs
 // make them collapsable components that show the time
 function GitFeed() {
 
@@ -22,6 +24,7 @@ function GitFeed() {
                 return new Date(b.updated_at) - new Date(a.updated_at)
 
             })
+           
             for (let index of sorted) {
                 idArray.push(
                     index.id
@@ -58,7 +61,7 @@ function GitFeed() {
             ])
         }
         getFeed()
-    });
+    }, []);
 
     return (
         <Grid container spacing={0} justify={"space-evenly"}>
@@ -66,7 +69,7 @@ function GitFeed() {
             {gitFeed.length ? (
                 gitFeed.slice(0, 5).map(obj =>
                     (
-                        <Grid item xs={6} md={10}>
+                        <Grid item xs={12} md={10}>
                             <h1>Current Projects</h1>
                             <Card>
                                 <CardContent>

@@ -10,31 +10,33 @@ import Container from '@material-ui/core/Container';
 function NavBar() {
 
     return (
-        <nav style={{ backgroundColor: "lightblue" }}>
-            <Container>
-                <Grid container spacing={0}>
-                    <Grid item xs={12} sm={9}>
-                        <Typography color="textPrimary">MATTHEW ATCHLEY</Typography>
+        <div>
+            <nav style={{ backgroundColor: "lightblue", padding: '15px' }}>
+                <Container maxWidth="lg">
+                    <Grid container spacing={0}>
+                        <Grid item xs={12} sm={9}>
+                            <Typography color="textPrimary">MATTHEW ATCHLEY</Typography>
+                        </Grid>
+                        <Grid item xs={12} sm={3}>
+                            <Breadcrumbs aria-label="breadcrumb">
+                                <Link
+                                    className="link" to="/"
+                                > About </Link>
+                                <Link
+                                    className="link" to="/projects"
+                                > Projects </Link>
+                                <Link
+                                    className="link" to="/contact"
+                                > Contact </Link>
+                                <Link
+                                    className="link" to="/resume"
+                                > Resume </Link>
+                            </Breadcrumbs>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={12} sm={3}>
-                        <Breadcrumbs aria-label="breadcrumb">
-                            <Link
-                                className="link" to="/"
-                            > About </Link>
-                            <Link
-                                className="link" to="/projects"
-                            > Projects </Link>
-                            <Link
-                                className="link" to="/contact"
-                            > Contact </Link>
-                            <Link
-                                className="link" to="/resume"
-                            > Resume </Link>
-                        </Breadcrumbs>
-                    </Grid>
-                </Grid>
-            </Container>
-        </nav>
+                </Container>
+            </nav >
+        </div>
     )
 }
 
