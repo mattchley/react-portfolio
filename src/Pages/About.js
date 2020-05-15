@@ -9,7 +9,7 @@ function About() {
     return (
         <Container>
             <h1>About Me!</h1>
-            <Grid container spacing={0} justify={"space-evenly"}>
+            <Grid container spacing={3} justify={"space-evenly"}>
                 <Grid item xs={12} md={6}>
                     <BodyContainer />
                 </Grid>
