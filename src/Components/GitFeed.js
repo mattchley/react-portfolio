@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -24,7 +25,7 @@ function GitFeed() {
                 return new Date(b.updated_at) - new Date(a.updated_at)
 
             })
-           
+
             for (let index of sorted) {
                 idArray.push(
                     index.id
@@ -64,61 +65,64 @@ function GitFeed() {
     }, []);
 
     return (
-        <Grid container spacing={0} justify={"space-evenly"}>
-
+        <Card variant="outlined" >
             {gitFeed.length ? (
-                gitFeed.slice(0, 5).map(obj =>
+                gitFeed.slice(0, 3).map(obj =>
                     (
-                        <Grid item xs={12} md={10}>
-                            <h1>Current Projects</h1>
-                            <Card>
-                                <CardContent>
-                                    <h2 key={obj.id[0]}>Name:<a href={obj.url[0]} alt={obj.name[0] + " url"}>{obj.name[0]}</a></h2>
-                                    <h4>Author:{obj.author[0]}</h4>
-                                    <p>Message: {obj.message[0]}</p>
-                                    <sub>Date: {obj.date[0]}</sub>
-                                </CardContent>
-                            </Card>
-                            <Card>
-                                <CardContent>
-                                    <h2 key={obj.id[1]}>Name:<a href={obj.url[1]} alt={obj.name[1] + " url"}>{obj.name[1]}</a></h2>
-                                    <h4>Author:{obj.author[1]}</h4>
-                                    <p>Message: {obj.message[1]}</p>
-                                    <sub>Date: {obj.date[1]}</sub>
-                                </CardContent>
-                            </Card>
-                            <Card>
-                                <CardContent>
-                                    <h2 key={obj.id[2]}>Name:<a href={obj.url[2]} alt={obj.name[2] + " url"}>{obj.name[2]}</a></h2>
-                                    <h4>Author:{obj.author[2]}</h4>
-                                    <p>Message: {obj.message[2]}</p>
-                                    <sub>Date: {obj.date[2]}</sub>
-                                </CardContent>
-                            </Card>
-                            <Card>
-                                <CardContent>
-                                    <h2 key={obj.id[3]}>Name:<a href={obj.url[3]} alt={obj.name[3] + " url"}>{obj.name[3]}</a></h2>
-                                    <h4>Author:{obj.author[3]}</h4>
-                                    <p>Message: {obj.message[3]}</p>
-                                    <sub>Date: {obj.date[3]}</sub>
-                                </CardContent>
-                            </Card>
-                            <Card>
-                                <CardContent>
-                                    <h2 key={obj.id[4]}>Name:<a href={obj.url[4]} alt={obj.name[4] + " url"}>{obj.name[4]}</a></h2>
-                                    <h4>Author:{obj.author[4]}</h4>
-                                    <p>Message: {obj.message[4]}</p>
-                                    <sub>Date: {obj.date[4]}</sub>
-                                </CardContent>
-                            </Card>
-                        </Grid>
+                        <Container maxWidth="lg" style={{ padding: '30px' }} >
+                            <Grid container spacing={0} justify={"space-evenly"} >
+                                <Grid item xs={12} md={10}>
+                                    <h1>Current Projects</h1>
+                                    <Card style={{ padding: '10px' }} >
+                                        <CardContent>
+                                            <h2 key={obj.id[0]}>Name:<a href={obj.url[0]} alt={obj.name[0] + " url"}>{obj.name[0]}</a></h2>
+                                            <h4>Author:{obj.author[0]}</h4>
+                                            <p>Message: {obj.message[0]}</p>
+                                            <sub>Date: {obj.date[0]}</sub>
+                                        </CardContent>
+                                    </Card>
+                                    <Card style={{ padding: '10px' }} >
+                                        <CardContent>
+                                            <h2 key={obj.id[1]}>Name:<a href={obj.url[1]} alt={obj.name[1] + " url"}>{obj.name[1]}</a></h2>
+                                            <h4>Author:{obj.author[1]}</h4>
+                                            <p>Message: {obj.message[1]}</p>
+                                            <sub>Date: {obj.date[1]}</sub>
+                                        </CardContent>
+                                    </Card>
+                                    <Card style={{ padding: '10px' }} >
+                                        <CardContent>
+                                            <h2 key={obj.id[2]}>Name:<a href={obj.url[2]} alt={obj.name[2] + " url"}>{obj.name[2]}</a></h2>
+                                            <h4>Author:{obj.author[2]}</h4>
+                                            <p>Message: {obj.message[2]}</p>
+                                            <sub>Date: {obj.date[2]}</sub>
+                                        </CardContent>
+                                    </Card>
+                                    {/* <Card style={{ padding: '10px' }} >
+                                        <CardContent>
+                                            <h2 key={obj.id[3]}>Name:<a href={obj.url[3]} alt={obj.name[3] + " url"}>{obj.name[3]}</a></h2>
+                                            <h4>Author:{obj.author[3]}</h4>
+                                            <p>Message: {obj.message[3]}</p>
+                                            <sub>Date: {obj.date[3]}</sub>
+                                        </CardContent>
+                                    </Card>
+                                    <Card style={{ padding: '10px' }} >
+                                        <CardContent>
+                                            <h2 key={obj.id[4]}>Name:<a href={obj.url[4]} alt={obj.name[4] + " url"}>{obj.name[4]}</a></h2>
+                                            <h4>Author:{obj.author[4]}</h4>
+                                            <p>Message: {obj.message[4]}</p>
+                                            <sub>Date: {obj.date[4]}</sub>
+                                        </CardContent>
+                                    </Card> */}
+                                </Grid>
+                            </Grid>
+                        </Container>
                     ))
 
             ) : (
                     <h2>Loading Current Projects</h2>
-                )}
 
-        </Grid>
+                )}
+        </Card>
     )
 }
 export default GitFeed
